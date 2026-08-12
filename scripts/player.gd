@@ -5,6 +5,7 @@ const SPEED = 300.0
 const ATTACK_COOLDOWN = 0.3
 const MAX_HEALTH = 3
 const INVULNERABILITY_DURATION = 0.5
+const ATTACK_RANGE = 80.0
 
 signal health_changed(current_health: int)
 
@@ -146,6 +147,38 @@ func _start_attack() -> void:
 
 	animated_sprite.play(anim_name)
 	animated_sprite.flip_h = flip
+
+	_deal_attack_damage()
+
+
+func _deal_attack_damage() -> void:
+	var closest_enemy = null
+	var closest_distance = ATTACK_RANGE
+
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if not enemy.has_method("take_damage"):
+			continue
+		var distance = global_position.distance_to(enemy.global_position)
+		if distance > closest_distance:
+			continue
+
+		var dir_match := false
+		match last_direction:
+			"up":
+				dir_match = enemy.global_position.y < global_position.y - 8.0
+			"down":
+				dir_match = enemy.global_position.y > global_position.y + 8.0
+			"left":
+				dir_match = enemy.global_position.x < global_position.x - 8.0
+			"right":
+				dir_match = enemy.global_position.x > global_position.x + 8.0
+
+		if dir_match:
+			closest_enemy = enemy
+			closest_distance = distance
+
+	if closest_enemy != null:
+		closest_enemy.take_damage(1)
 
 
 func _update_movement_animation(direction_x: float, direction_y: float) -> void:
