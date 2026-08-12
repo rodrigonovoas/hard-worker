@@ -7,6 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://dp6lgn2qgha1k" path="res://assets/sprites/player/walk_up.png" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://degy0xhgx6v64" path="res://assets/sprites/player/attack_left.png" id="3_smehm"]
 [ext_resource type="Texture2D" uid="uid://thpgye235spa" path="res://assets/sprites/player/attack_top.png" id="4_ur7pv"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_down/1.png" id="5_death_d1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_down/2.png" id="6_death_d2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_down/3.png" id="7_death_d3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_down/4.png" id="8_death_d4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_down/5.png" id="9_death_d5"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_left/1.png" id="10_death_l1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_left/2.png" id="11_death_l2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_left/3.png" id="12_death_l3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_left/4.png" id="13_death_l4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_left/5.png" id="14_death_l5"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_up/1.png" id="15_death_u1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_up/2.png" id="16_death_u2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_up/3.png" id="17_death_u3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_up/4.png" id="18_death_u4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/death_up/5.png" id="19_death_u5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
 atlas = ExtResource("2_fjrip")
@@ -228,11 +243,75 @@ animations = [{
 "loop": 1,
 "name": &"up",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_death_d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_death_d2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_death_d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_death_d4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_death_d5")
+}],
+"loop": false,
+"name": &"death_down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_death_l1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_death_l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_death_l3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_death_l4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_death_l5")
+}],
+"loop": false,
+"name": &"death_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_death_u1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_death_u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_death_u3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_death_u4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_death_u5")
+}],
+"loop": false,
+"name": &"death_up",
+"speed": 8.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=1634442069]
 scale = Vector2(4, 4)
 script = ExtResource("1_dqkch")
+groups = [&"player"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=524622703]
 sprite_frames = SubResource("SpriteFrames_gmd0v")
@@ -242,3 +321,6 @@ frame_progress = 0.32785967
 [node name="Camera2D" type="Camera2D" parent="." unique_id=919741063]
 limit_left = 0
 limit_top = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dqkch")

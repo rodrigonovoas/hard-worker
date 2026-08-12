@@ -1,0 +1,113 @@
+[gd_scene format=4]
+
+[ext_resource type="Texture2D" uid="uid://b75v4ywmc4wso" path="res://assets/sprites/tilesets/SpikesA_Anim_v1.0_frames_spritesheet.png" id="1_jm7nv"]
+[ext_resource type="Script" path="res://scripts/spike.gd" id="2_spike"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_01"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_02"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_03"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_04"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_05"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_06"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_07"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_08"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_09"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_10"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_11"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7nv_12"]
+atlas = ExtResource("1_jm7nv")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jm7nv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_09")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7nv_12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm7nv"]
+size = Vector2(16, 16)
+
+[node name="Spike" type="StaticBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("2_spike")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jm7nv")
+animation = &"default"
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jm7nv")
