@@ -238,3 +238,7 @@ script = ExtResource("1_dqkch")
 sprite_frames = SubResource("SpriteFrames_gmd0v")
 animation = &"down"
 frame_progress = 0.32785967
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=919741063]
+limit_left = 0
+limit_top = 0
